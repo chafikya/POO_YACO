@@ -1,5 +1,5 @@
 
 public interface CapteurListener {
-	public void Nouveau_Concert( concert);
+	public void PbSeuille( ProblemeEvent probleme);
 
 }
