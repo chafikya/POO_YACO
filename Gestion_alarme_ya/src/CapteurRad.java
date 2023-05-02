@@ -1,14 +1,14 @@
 
 public class CapteurRad {
 	public String nom;
-	public String type;
+	public String type= "radiation";
 	public String lieu;
 	public float valeur;
 	
 	CapteurListener b;
-	public CapteurRad(String nom,String type,String lieu, float valeur) {
+	public CapteurRad(String nom,String lieu, float valeur) {
 		this.nom=nom;
-		this.type=type;
+		
 		this.lieu=lieu;
 		this.valeur=valeur;
 		

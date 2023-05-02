@@ -2,14 +2,13 @@ import java.util.ArrayList;
 
 public class CapteurGaz {
 	public String nom;
-	public String type;
+	public String type="gaz";
 	public String lieu;
 	public float valeur;
 	CapteurListener a;
 	CapteurListener b;
-	public CapteurGaz(String nom,String type,String lieu, float valeur) {
+	public CapteurGaz(String nom,String lieu, float valeur) {
 		this.nom=nom;
-		this.type=type;
 		this.lieu=lieu;
 		this.valeur=valeur;
 		
@@ -19,8 +18,8 @@ public class CapteurGaz {
 		this.a=j;
 		this.b=i;
 	}
-	public void generate_new_alarme(String nom,String type, String lieu,float valeur) {
-		ProblemeEvent probleme= new ProblemeEvent(this,type,lieu,valeur,nom);
+	public void generate_new_alarme(String type, String lieu,int niveau) {
+		ProblemeEvent probleme= new ProblemeEvent(this,type,lieu,niveau);
 		a.PbSeuille(probleme);
 		b.PbSeuille(probleme);
 		
