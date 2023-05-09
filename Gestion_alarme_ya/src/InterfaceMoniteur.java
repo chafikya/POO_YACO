@@ -13,8 +13,8 @@ public class InterfaceMoniteur extends JFrame {
 	ActionListener voirDetail = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("bouton fonctionne");
-			JWindow fenDetail = new JWindow();
-		}
+			/*JDialog fenDetail = new JDialog(this.frameDetail.getSelectedItem().toSting());
+		*/}
 	};
 	
 	public InterfaceMoniteur(String nom_moniteur) {
@@ -37,16 +37,26 @@ public class InterfaceMoniteur extends JFrame {
 		
 	}
 	
-	public void Alarme(String nat_probleme) {
+	public void Alarme(ProblemeEvent probleme) {
 		System.out.println("probleme transmis interface graphique");
 		
-		JLabel attentionPb = new JLabel("attention un "+ nat_probleme+ " est surveneue");
+		JLabel attentionPb = new JLabel("attention un "+ probleme.type + " est surveneue");
+		JFrame frameDetail = new JFrame();
+		
 		this.fene.add(attentionPb);
         JButton boutonDetail = new JButton("voir détails");
         this.top.add(boutonDetail);
         boutonDetail.addActionListener(voirDetail);
+        if (probleme.type=="gaz") {
+        	JLabel gazResp = new JLabel("une fuite de "+ probleme.getGazFuit() +" a lieu");
+        	frameDetail.add(gazResp);
+        }
+        JLabel localisation = new JLabel(" Batiment :"+ probleme.lieu);
+        frameDetail.add(localisation);
+        JLabel nivPb = new JLabel("Niveau : "+ probleme.niveau);
+        frameDetail.add(nivPb);
         
-        JFrame frameDetail = new JFrame();
+        
         this.revalidate();
 		
 		

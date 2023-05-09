@@ -8,7 +8,7 @@ public class MoniteurA implements CapteurListener{
 	public void PbSeuille(ProblemeEvent probleme) {
 		System.out.println("message transmis au moniteurA. ");
 		String natPb = probleme.type;
-		inter.Alarme(natPb);
+		inter.Alarme(probleme);
 		
 		
 	}
