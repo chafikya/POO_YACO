@@ -1,31 +1,27 @@
 
 public class CapteurIncend {
-	public String nom;
 	public String type="incendie";
 	public String lieu;
-	public float valeur;
+	String nom;
 	CapteurListener a;
-	CapteurListener b;
-	public CapteurIncend(String nom,String lieu, float valeur) {
-		this.nom=nom;
-		
+	
+	public CapteurIncend(String un_nom, String lieu) {
 		this.lieu=lieu;
-		this.valeur=valeur;
+		this.nom = un_nom;
 		
 	}
 	
 	public void remplir (CapteurListener j) {
 		this.a=j;
-		
 	}
-	public void generate_new_alarme(String nom,String type, String lieu,int niveau) {
-		ProblemeEvent probleme= new ProblemeEvent(this,type,lieu,valeur,nom);
+	
+	public void generate_new_alarme(int niveau) {
+		ProblemeEvent probleme= new ProblemeEvent(this, this.nom, this.type, this.lieu, niveau );
 	
 		a.PbSeuille(probleme);
 		
-		
-		
 	}
+	/*
 	public void verif(float valeur) {
 		if (valeur>10 && valeur<20) {
 			int niv =2;
@@ -40,5 +36,5 @@ public class CapteurIncend {
 			generate_new_alarme( nom, type, lieu, niv);
 		}
 	}
-
+*/
 }

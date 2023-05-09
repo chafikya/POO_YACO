@@ -1,16 +1,14 @@
 
 public class CapteurRad {
-	public String nom;
-	public String type= "radiation";
+	private String type= "radiation";
 	public String lieu;
-	public float valeur;
+	String nom;
+	float valeur_capteur;
 	
 	CapteurListener b;
-	public CapteurRad(String nom,String lieu, float valeur) {
-		this.nom=nom;
-		
+	public CapteurRad(String un_nom, String lieu) {
 		this.lieu=lieu;
-		this.valeur=valeur;
+		this.nom=un_nom;
 		
 	}
 	
@@ -18,14 +16,14 @@ public class CapteurRad {
 		
 		this.b=i;
 	}
-	public void generate_new_alarme(String nom,String type, String lieu,float valeur) {
-		ProblemeEvent probleme= new ProblemeEvent(this,type,lieu,valeur,nom);
+	public void generate_new_alarme(int niveau) {
+		ProblemeEvent probleme= new ProblemeEvent(this,this.nom, this.type, this.lieu, niveau);
 		b.PbSeuille(probleme);
 		
-	}
+	}/*
 	public void verif(float valeur) {
 		if (valeur>10) {
 			generate_new_alarme( nom, type, lieu, valeur);
 		}
-	}
+	}*/
 }
